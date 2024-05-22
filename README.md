@@ -3,4 +3,5 @@
 ## 
 
 - [x] make it deploy
-- [ ] scaffolding basic ui with mock data
+- [x] scaffolding basic ui with mock data
+- [x] tidy up build process
