@@ -2,5 +2,5 @@
 
 ## 
 
-- [ ] make it deploy
+- [x] make it deploy
 - [ ] scaffolding basic ui with mock data
