@@ -16,7 +16,8 @@ import {
  *
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
  */
-export const createTable = pgTableCreator((name) => `0-nest-gallery_${name}`);
+// использую nest-gallery как префикс для DB таблиц. Таким образом я могу создать одну DB на верселе и использовать ее для нескольких проектов, так как таблицы будут разделены по префиксу.
+export const createTable = pgTableCreator((name) => `nest-gallery_${name}`);
 
 export const posts = createTable(
   "post",
