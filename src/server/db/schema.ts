@@ -20,11 +20,14 @@ import {
 export const createTable = pgTableCreator((name) => `nest-gallery_${name}`);
 
 export const images = createTable(
-  "images",
+  "image",
   {
     id: serial("id").primaryKey(),
     name: varchar("name", { length: 256 }).notNull(),
     url: varchar("url", { length: 1024 }).notNull(),
+
+    userId: varchar("userId", { length: 256 }).notNull(),
+
     createdAt: timestamp("created_at", { withTimezone: true })
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),
