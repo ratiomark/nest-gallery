@@ -8,6 +8,7 @@ import {
 } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { UploadButton } from "~/utils/uploadthing";
+import { SimpleUploadButton } from "./simple-upload-button";
 
 export function TopNav() {
   const router = useRouter();
@@ -21,7 +22,8 @@ export function TopNav() {
         </SignedOut>
         <SignedIn>
           <div className="flex">
-            <UploadButton
+            <SimpleUploadButton />
+            {/* <UploadButton
               content={{
                 button: "Upload files",
               }}
@@ -33,7 +35,9 @@ export function TopNav() {
                 clearBtn: {
                   background: "red",
                   padding: "0px",
+                  display: "none",
                 },
+
                 button: {
                   color: "gray",
                   backgroundColor: "transparent",
@@ -45,11 +49,12 @@ export function TopNav() {
                   padding: "0px",
                   width: "auto",
                   height: "auto",
+                  // display: "none",
                 },
               }}
               endpoint="imageUploaderCustomName"
               onClientUploadComplete={() => router.refresh()}
-            />
+            /> */}
             <UserButton />
           </div>
         </SignedIn>

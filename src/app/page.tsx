@@ -12,7 +12,7 @@ async function Images() {
   const images = await getMyImages();
   // console.log(images);
   return (
-    <div className="flex flex-wrap justify-center gap-4">
+    <div className="flex flex-wrap justify-center gap-4 p-4">
       {images.map((image, index) => (
         <div key={image.id} className="flex  flex-col">
           <Link href={`/img/${image.id}`}>
@@ -32,15 +32,13 @@ async function Images() {
 }
 export default async function HomePage() {
   return (
-    <main className="">
-      <div className="flex flex-wrap gap-4">
-        <SignedOut>
-          <p className="flex-1 text-center">Please, sign in</p>
-        </SignedOut>
-        <SignedIn>
-          <Images />
-        </SignedIn>
-      </div>
-    </main>
+    <div className="flex flex-wrap gap-4">
+      <SignedOut>
+        <p className="flex-1 text-center">Please, sign in</p>
+      </SignedOut>
+      <SignedIn>
+        <Images />
+      </SignedIn>
+    </div>
   );
 }

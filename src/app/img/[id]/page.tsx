@@ -7,5 +7,9 @@ export default async function ImagePage({
 }) {
   const idAsNumber = parseInt(imageId);
   if (isNaN(idAsNumber)) throw new Error("Invalid image ID");
-  return <FullPageImage imageId={idAsNumber} />;
+  return (
+    <div className="flex h-full min-h-0 w-full min-w-0 overflow-y-hidden">
+      <FullPageImage imageId={idAsNumber} />
+    </div>
+  );
 }
