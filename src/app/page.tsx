@@ -32,7 +32,7 @@ async function Images() {
 }
 export default async function HomePage() {
   return (
-    <div className="flex flex-wrap gap-4">
+    <div className="">
       <SignedOut>
         <p className="flex-1 text-center">Please, sign in</p>
       </SignedOut>
