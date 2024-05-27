@@ -70,11 +70,11 @@
   * {
     @apply border-border;
   }
-
   body {
     @apply bg-background text-foreground;
   }
 }
+
 
 dialog {
   width: 100vw;
