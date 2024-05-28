@@ -8,17 +8,21 @@ function getRandomInt(min = 50, max = 250): number {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+interface ImagesClientProps {
+  width: number;
+  images: ImagesType[];
+  scale?: number;
+  move?: boolean;
+  moveTimeMs?: number;
+}
+
 export default function ImagesClient({
   width,
   images,
   scale = 0,
   move = true,
-}: {
-  width: number;
-  images: ImagesType[];
-  scale?: number;
-  move?: boolean;
-}) {
+  moveTimeMs = 6000,
+}: ImagesClientProps) {
   const containerStyle = {
     width: `${width}px`,
   };
@@ -83,14 +87,21 @@ export default function ImagesClient({
     scale && styleSheet.insertRule(scaleKeyframes, styleSheet.cssRules.length);
   }
 
-  const allAnimation = `${animationName} ${duration + 2000}ms infinite`;
-  const moveAnimation = `${moveAnimationName} ${duration + 2000}ms infinite`;
-  const scaleAnimation = `${scaleAnimationName} ${duration}ms infinite`;
+  const allAnimation = `${animationName} ${moveTimeMs ? moveTimeMs : duration + 2000}ms infinite`;
+  const moveAnimation = `${moveAnimationName} ${moveTimeMs ? moveTimeMs : duration + 2000}ms ease 0s  normal none running`;
+  const scaleAnimation = `${scaleAnimationName} ${duration}ms ease 5s  normal none running`;
 
   return (
     <div
       style={{
-        animation: `${allAnimation}`,
+        // animation: `${allAnimation}`,
+        // animation: `${moveAnimation}, ${scaleAnimation}`,
+        animation: `
+        custom-move 1000ms ease 0s infinite,
+        custom-scale 40000ms ease 0s infinite
+      `,
+        transform: "calc(var(--custom-scale) + var(--custom-move))",
+        // animation: "custom-move 3000ms infinite, custom-scale 200ms infinite",
         // animation: `${moveAnimationName} ${duration + 2000}ms infinite, ${scale > 0 ? `${scaleAnimationName} ${duration}ms infinite` : ""}`,
         // animation: `${moveAnimationName} ${duration + 2000}ms infinite, ${scale > 0 ? `${scaleAnimationName} ${duration}ms infinite` : ''}`,
       }}

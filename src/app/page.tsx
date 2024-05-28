@@ -15,15 +15,23 @@ async function Images({
   width,
   scale = 0,
   move = true,
+  moveTimeMs = 0,
 }: {
   width: number;
   scale?: number;
   move?: boolean;
+  moveTimeMs?: number;
 }) {
   const images = await getMyImages();
 
   return (
-    <ImagesClient width={width} images={images} scale={scale} move={move} />
+    <ImagesClient
+      width={width}
+      images={images}
+      scale={scale}
+      move={move}
+      moveTimeMs={moveTimeMs}
+    />
   );
 }
 
@@ -43,7 +51,7 @@ export default async function HomePage() {
       </SignedOut>
       <SignedIn>
         <ImagesContainer>
-          <Images width={500} scale={-0.505} move={false} />
+          <Images width={500} scale={-0.505} move={false} moveTimeMs={100} />
           <Images width={450} />
           <Images width={350} move={false} />
           <Images width={350} />
